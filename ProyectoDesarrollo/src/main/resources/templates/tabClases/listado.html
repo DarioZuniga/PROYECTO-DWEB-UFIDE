@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+    <title>Proyecto</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+<nav th:replace="layout/plantilla :: nav"/> 
+
+<div class="contenido">
+    <h2>Clase de Clases:</h2>
+   
+        <tr>
+            <td><a th:href="@{/tabClase/nuevo}" sec:authorize="hasRole('ROLE_ADMIN')" class="a">Nueva Clase</a></td>
+        </tr>
+    
+   
+         
+
+</div>
+    
+    
+    
+    <section>
+    <div th:if="${tabClase != null and !tabClase.empty}">
+        <table class="td">
+            <thead>
+                <tr>
+                    <th>Codigo /th>
+                    <th>Unidad</th>
+                    <th>Hora</th>
+                    <th>Tipo de servicio</th>
+                    <th>[[#{accion.eliminar}]]</th>
+                    <th>[[#{accion.editar}]]</th>
+                </tr>
+            </thead>
+            <tr th:each="tabClase : ${tabClasees}">
+                <td th:text="${tabClase.tabLenguaje.rutCod}"></td>
+                <td th:text="${tabClase.tabBus.busUnidad}"></td>
+                <td th:text="${tabClase.horHora}"></td>
+                <td th:text="${tabClase.horServicio}"></td>
+                <td><a th:href="@{/tabClase/eliminar/}+${tabClase.horCodigo}">Eliminar</a></td>
+                <td><a th:href="@{/tabClase/modificar/}+${tabClase.horCodigo}">Modificar</a></td>
+            </tr>
+        </table>
+
+        <br/>
+        <br/>
+        <br/>
+        <div th:if="${(tabClasees == null or tabClasees.empty)}">
+          [[#{horario.no_mostrar}]]  
+        </div>
+    </div>
+        </section>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    
+    </footer>
+</body>
+</html>

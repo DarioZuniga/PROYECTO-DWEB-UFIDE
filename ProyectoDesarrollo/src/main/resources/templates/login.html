@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Proyecto</title>     
+        <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+        
+         <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <header class="logo nav-link" th:replace="layout/plantilla :: header"/>
+        <section id="actions" class="py-4 md-4 bg-light">
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>            
+        </section>
+        <section id="login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mx-auto">
+                        <div class="card">
+                            <div class="card-header" >
+                                <h4 class="text-center">[[#{login.login}]]</h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" th:action="@{/login}">
+                                    <div class="row py-1 md-2 bg-light">
+                                        <div class="form-group text-center">
+                                            <label for="username"><h6>[[#{login.username}]]:</h3></label><br>
+                                            <input type="text" name="username" id="username"/>
+                                        </div>
+                                    </div>
+                                    <div class="row py-1 md-2 bg-light">
+                                        <div class="form-group text-center">
+                                            <label for="password" ><h6>[[#{login.password}]]:</h3></label><br>
+                                            <input type="password" name="password" id="password"/>
+                                        </div>
+                                    </div>
+                                    <div class="row py-1 md-2 bg-light">
+                                        <button 
+                                            type="submit" 
+                                            class="btn btn-primary btn-block">
+                                            <h5>[[#{login.login}]]</h5>
+                                        </button>
+                                    </div>                                    
+                                </form>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    
+    </footer>    
+    </body>
+</html>

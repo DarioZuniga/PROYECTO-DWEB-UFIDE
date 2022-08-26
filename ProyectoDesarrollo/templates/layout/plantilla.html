@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Contrasuli</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:fragment="header" class="header">
+            <nav class="nav">
+                <a th:href="@{/}" class="logo nav-link">Contrasuli</a>
+            </nav>
+        </header>
+        
+        <footer th:fragment="footer" class="footer">
+            <p>Contrasuli®  Derechos Reservados 2022&COPY</p>
+        </footer>
+    </body>
+</html>

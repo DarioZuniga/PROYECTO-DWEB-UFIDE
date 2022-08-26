@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <title>Contrasuli</title>
+    <meta charset="UTF-8">
+    <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+
+
+    <header th:replace="layout/plantilla  :: header"/>
+    <div class="contenido">
+        <h2>Horarios</h2>
+        <a th:href="@{/sanjosePuriscalK/listado}" class="a">Regresar</a>
+        <br/>
+        <br/>
+        <form th:action="@{/sanjosePuriscalK/guardar}" 
+              method="post"@
+              th:object="${sanjosePuriscalK}">
+            <input type="hidden" name="idSpwk145" th:field="*{idSpwk145}"/>
+            <table class="ta">
+                <tr>
+                    <th colspan="2">Ingrese los datos del servicio</th>
+                </tr>
+
+                <tbody>
+                    <tr>
+                        <td><label for="hora">Hora</label></td>
+                        <td><input type="text" name="hora" th:file="*{hora}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="servicio">Servicio</label></td>
+                        <td><input type="text" name="servicio" th:file="*{servicio}"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" name="guardar" value="Guardar"/></td>                            
+                        </form>
+                        </div>
+                <header th:replace="layout/plantilla  :: footer"/>
+
+                </html>

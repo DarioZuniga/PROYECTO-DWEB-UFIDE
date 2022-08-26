@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    
+    <head>
+    <title>Proyecto</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+    <body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+<nav th:replace="layout/plantilla :: nav"/> </nav>
+
+<div class="contenido">
+    <h2>Horarios</h2>
+    <a th:href="@{/tabHorario/listado}" class="a">Regresar</a>
+    <br/>
+    <br/>
+    <form th:action="@{/tabHorario/guardar}"
+          method="post"
+          th:object="${tabHorario}">
+        <input type="hidden" name="horCodigo" th:field="*{horCodigo}"/>
+        <input type="hidden" name="rutId" th:field="*{tabRuta.rutId}"/>
+        <input type="hidden" name="busId" th:field="*{tabBus.busId}"/>
+
+        <table class="th">
+            <thead>
+                <tr>
+                    <th colspan="2">Ingrese los datos de la hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="horHora">Hora:</label></td>
+                    <td><input type="text" name="horHora" th:field="*{horHora}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="horServicio">Tipo de Servicio:</label></td>
+                    <td><input type="text" name="horServicio" th:field="*{horServicio}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="rutCod">Código de ruta:</label></td>
+                    <td><input type="number" name="rutCod" th:field="*{tabRuta.rutCod}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="busUnidad">Unidad:</label></td>
+                    <td><input type="number" name="busUnidad" th:field="*{tabBus.busUnidad}"/></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"><input type="submit" name="guardar" value="Guardar"/></td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+
+    <br/>
+    <br/>
+    <br/>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <title>Proyecto</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+<nav th:replace="layout/plantilla :: nav"/> 
+
+<div class="contenido">
+    <h2>Buses</h2>
+    <table class="th">
+        <tr>
+            <td><a th:href="@{/tabBus/nuevo}" class="a">Nueva Unidad</a></td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <div th:if="${tabBuses != null and !tabBuses.empty}">
+        <table class="td">
+            <thead>
+                <tr>
+                    <th>Unidad</th>
+                    <th>Codigo Ruta</th>
+                    <th>Capacidad</th>
+                    <th>[[#{accion.eliminar}]]</th>
+                    <th>[[#{accion.editar}]]</th>
+                </tr>
+            </thead>
+            <tr th:each="tabBus : ${tabBuses}">
+                <td th:text="${tabBus.busUnidad}"></td>
+                <td th:text="${tabBus.tabRuta.rutCod}"></td>
+                <td th:text="${tabBus.busCapacidad}"></td>
+                <td><a th:href="@{/tabBus/eliminar/}+${tabBus.busId}">Eliminar</a></td>
+                <td><a th:href="@{/tabBus/modificar/}+${tabBus.busId}">Modificar</a></td>
+            </tr>
+        </table>
+
+
+        <div th:if="${(tabBuses == null or tabBuses.empty)}">
+           [[#{buses.no.mostrar}]]
+        </div>
+    </div>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+</body>
+</html>

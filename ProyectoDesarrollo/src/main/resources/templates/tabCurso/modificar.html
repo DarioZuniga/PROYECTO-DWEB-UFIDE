@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <title>Proyecto</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+
+<nav th:replace="layout/plantilla :: nav"/> </nav>
+
+<div class="contenido">
+    <h2>Buses</h2>
+    <a th:href="@{/tabBus/listado}" class="a">Regresar</a>
+    <br/>
+    <br/>
+    <form th:action="@{/tabBus/guardar}" 
+          method="post"
+          th:object="${tabBus}">
+        <input type="hidden" name="busId" th:field="*{busId}"/>
+        <input type="hidden" name="rutId" th:field="*{tabRuta.rutId}"/>
+        <table class="ta">
+            <thead>
+                <tr>
+                    <th colspan="2">Ingrese los datos del autobus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="busUnidad">Unidad</label></td>
+                    <td><input type="number" name="busUnidad" th:field="*{busUnidad}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="rutCod">Código de ruta</label></td>
+                    <td><input type="number" name="rutCod" th:field="*{tabRuta.rutCod}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="busCapacidad">Capacidad</label></td>
+                    <td><input type="number" name="busCapacidad" th:field="*{busCapacidad}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" name="guardar" value="Guardar"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+
+</html>

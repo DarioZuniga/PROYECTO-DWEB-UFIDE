@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <title>Proyecto</title>
+    <meta charset="UTF-8">
+    <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+<nav th:replace="layout/plantilla :: nav"/> </nav>
+
+         <section th:fragment="listado_rutas" id="rutId">
+            <div class="contenido">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{cliente.titulo}]]</h4>
+                            </div>
+                            <div class="card-body">
+
+
+                                <a th:href="@{/tabLenguaje/nuevo}" sec:authorize="hasRole ('ROLE_ADMIN')"> Nuevo Cliente </a>
+                                <div th:if="${tabLenguajees != null and !tabLenguajees.empty}">
+
+                                   
+
+
+                                    <table class="table table-striped">
+                                        <thead class="bg-dark text-white">
+                                            <tr>
+                                                <th>#</th>
+
+                                                <th>[[#{ruta.nombre}]]</th>
+                                                <th>[[#{ruta.hora}]]</th>
+                                                <th ></th>
+                                                <th ></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="cliente,contador: ${tabLenguajees}">
+                                                <td>[[${contador.count}]]</td>        
+
+                                                <td>[[${cliente.nombre}+' '+${cliente.apellidos}]]</td>
+
+                                                <td class='text-end'>[[${new java.text.DecimalFormat('$#,##0.00').format()}]]</td>
+
+                                                <td sec:authorize="hasRole ('ROLE_ADMIN')">
+                                                    <a th:href="@{/tabLenguaje/eliminar/}+${cliente.idCliente}" class='btn btn-danger'> Eliminar </a>
+                                                    <i class='fas fa-trash'></i>
+                                                </td>
+                                                <td sec:authorize="hasRole ('ROLE_ADMIN')">
+                                                    <a th:href="@{/cliente/modificar/}+${cliente.idCliente}" class='btn btn-success'> Modificar </a> </td>
+                                                <i class='fas fa-pencil'></i>       
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div th:if="${clientes == null or clientes.empty}">
+                                    No tenemos lista de clientes no mostrar...
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card bg-danger text-white text-white text-center mb-3">
+                                <div class="card-body">
+                                    <h3>[[#{cliente.limiteTotal}]]</h3>
+                                    <h4>[[${new java.text.DecimalFormat('$#,##0.00').format(999999)}]] </h4>
+                                </div>
+                            </div>
+                            <div class=' card bg-success text-white text-center mb-3'>
+                                <div class="card-body">
+                                    <h3>[[#{cliente.totalClientes}]]</h3>
+                                    <h4>
+                                        <i class="fas fa-users"></i> [[${totalClientes}]]
+                                    </h4>
+                                </div>
+                            </div>        
+                        </div>
+                    </div>
+                    </section>
+
+
+<!--
+
+<section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarLenguaje">
+                            <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+ <section th:fragment="agregarLenguaje">
+            <div id="agregarLenguaje" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" sec:authorize="hasRole('ROLE_ADMIN')">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Lenguaje</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/tabLenguaje/guardar}" th:object="${tabLenguaje}"
+                              method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="idSpwd145" th:text="ID">Id</label>
+                                    <input type="number" class="form-control" name="/sanjosePuriscalD/guardar" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hora" th:text="hora">Hora</label>
+                                    <input type="text" class="form-control" name="hora" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="servicio" th:text="Servicio">Servicio</label>
+                                    <input type="text" class="form-control" name="servicio" required="true"/>
+                                </div>
+                                                              
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>    
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="contenido">
+    <h2>Horarios</h2>
+    <table class="th">
+        <tr>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/tabLenguaje/nuevo}" class="a">Nueva Lenguaje</a></td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <div th:if="${tabLenguajees != null and !tabLenguajees.empty}">
+        <table class="td">
+             <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th  sec:authorize="hasRole ('ROLE_ADMIN')">[[#{accion.eliminar}]]</th>
+                <th  sec:authorize="hasRole ('ROLE_ADMIN')">[[#{accion.editar}]]</th>
+            </tr>
+             </thead>
+            <tr th:each="tabLenguaje : ${tabLenguajees}">
+                <td>[[${tabLenguaje.rutCod}]]</td>
+                <td>[[${tabLenguaje.rutNombre}]]</td>
+                <td  sec:authorize="hasRole ('ROLE_ADMIN')"><a th:href="@{/tabLenguaje/eliminar/}+${tabLenguaje.rutId}">Eliminar</a></td>
+                <td  sec:authorize="hasRole ('ROLE_ADMIN')"><a th:href="@{/tabLenguaje/modificar/}+${tabLenguaje.rutId}">Modificar</a></td>
+            </tr>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        <div th:if="${(tabLenguajees == null or tabLenguajees.empty) or (tabLenguajees == null or tabLenguajees.empty)}">
+            [[#{buses.no.mostrar}]].
+        </div>
+    </div>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+
+</html>

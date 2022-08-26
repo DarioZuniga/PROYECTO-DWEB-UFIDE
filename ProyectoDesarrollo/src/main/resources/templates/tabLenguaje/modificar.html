@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    
+    <head>
+    <title>Proyecto</title>
+    <meta charset="UTF-8">
+    
+        <link href="/css/menu_1.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/estilos_2.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" 
+              th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+</head>
+    <header class="logo nav-link" th:replace="layout/plantilla :: header"/></header>
+<nav th:replace="layout/plantilla :: nav"/> </nav>
+
+<div class="contenido">
+    <h2>Lenguajes</h2>
+    <a th:href="@{/tabLenguaje/listado}" class="a">Regresar</a>
+    <br/>
+    <br/>
+    <form th:action="@{/tabLenguaje/guardar}" 
+          method="post"
+          th:object="${tabLenguaje}">
+        <input type="hidden" name="rutId" th:field="*{rutId}"/>
+        <table class="th">
+            <thead>
+                <tr>
+                    <th colspan="2">Ingrese los datos de la ruta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="rutCod">Código de ruta:</label></td>
+                    <td><input type="number" name="rutCod" th:field="*{rutCod}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="rutNombre">Nombre</label></td>
+                    <td><input type="text" name="rutNombre" th:field="*{rutNombre}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" name="guardar" value="Guardar"/></td>      
+            </tbody>
+        </table>
+    </form>
+    <footer>
+        <a2 th:replace="layout/plantilla :: footer"/></a2>
+    </footer>
+
+</html>
