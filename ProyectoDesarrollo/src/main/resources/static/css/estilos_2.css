@@ -11,8 +11,8 @@ body {
 }
  
 #main-container{
-    margin: 200px auto;
-    width: 570px;
+    margin: 500px auto;
+    width: 700px;
 }
  
 table{
@@ -109,7 +109,7 @@ footer{
     width: 100%;
     padding: 3px;
     background-color: #808080;
-    text-align: center;
+    text-align: left;
      bottom: -60px;
     
 }

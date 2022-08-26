@@ -18,37 +18,31 @@
 <nav th:replace="layout/plantilla :: nav"/> 
 
 <div class="contenido">
-    <h2>Buses</h2>
+    <h2>Cursos</h2>
     <table class="th">
         <tr>
-            <td><a th:href="@{/tabBus/nuevo}" class="a">Nueva Unidad</a></td>
+            <td><a th:href="@{/Clases/nuevo}" class="a">Nueva Unidad</a></td>
         </tr>
     </table>
     <br/>
     <br/>
-    <div th:if="${tabBuses != null and !tabBuses.empty}">
+    
         <table class="td">
             <thead>
                 <tr>
                     <th>Unidad</th>
-                    <th>Codigo Ruta</th>
+                    <th>Codigo</th>
                     <th>Capacidad</th>
                     <th>[[#{accion.eliminar}]]</th>
                     <th>[[#{accion.editar}]]</th>
                 </tr>
             </thead>
-            <tr th:each="tabBus : ${tabBuses}">
-                <td th:text="${tabBus.busUnidad}"></td>
-                <td th:text="${tabBus.tabRuta.rutCod}"></td>
-                <td th:text="${tabBus.busCapacidad}"></td>
-                <td><a th:href="@{/tabBus/eliminar/}+${tabBus.busId}">Eliminar</a></td>
-                <td><a th:href="@{/tabBus/modificar/}+${tabBus.busId}">Modificar</a></td>
-            </tr>
+            
         </table>
 
 
-        <div th:if="${(tabBuses == null or tabBuses.empty)}">
-           [[#{buses.no.mostrar}]]
+      
+           [[#{no.mostrar}]]
         </div>
     </div>
     <footer>

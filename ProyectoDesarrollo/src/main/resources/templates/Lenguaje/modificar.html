@@ -29,7 +29,7 @@
     <form th:action="@{/tabLenguaje/guardar}" 
           method="post"
           th:object="${tabLenguaje}">
-        <input type="hidden" name="rutId" th:field="*{rutId}"/>
+        <input type="hidden" name="Id" th:field="*{Id}"/>
         <table class="th">
             <thead>
                 <tr>
@@ -38,12 +38,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><label for="rutCod">Código de ruta:</label></td>
-                    <td><input type="number" name="rutCod" th:field="*{rutCod}"/></td>
+                    <td><label for="Cod">Código de Curso:</label></td>
+                    <td><input type="number" name="Cod" th:field="*{Cod}"/></td>
                 </tr>
                 <tr>
-                    <td><label for="rutNombre">Nombre</label></td>
-                    <td><input type="text" name="rutNombre" th:field="*{rutNombre}"/></td>
+                    <td><label for="Nombre">Nombre</label></td>
+                    <td><input type="text" name="Nombre" th:field="*{Nombre}"/></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" name="guardar" value="Guardar"/></td>      
